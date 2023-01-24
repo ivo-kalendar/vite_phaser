@@ -1,11 +1,10 @@
+import * as TYPE from './TYPE';
 
 /**
- * bla bla
+ * Random object to be mixed with class...
+ * @type {TYPE.ObjTypeTYPE}
  */
 const obj = {
-    /**
-     * @type {Sting}
-     */
     prop1: 'String value',
     prop2: 55,
     prop3: [1,2,3],

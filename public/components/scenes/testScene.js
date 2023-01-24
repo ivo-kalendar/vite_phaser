@@ -1,3 +1,7 @@
+import Ext2 from "../obj/Ext2"
+import ExtendedClass from "../obj/ExtendedTestClass"
+import TestClass from "../obj/testClass"
+
 export default class TestScene extends Phaser.Scene{
     constructor(config) {
         super(config)
@@ -46,6 +50,21 @@ export default class TestScene extends Phaser.Scene{
         // this.result = Phaser.Utils.Array.SpliceOne(arr, 2)
         // this.result = Phaser.Utils.Array.Swap(arr, 1, 3)
 
+        /**
+         * @typedef {Object} Obj
+         * @property {string} key - The key value of the object.
+         * @property {number} num - The numeric value of the object.
+         * @property {Array} arr - An array of numbers associated with the object.
+         * @property {Object} lev - An object containing a deeper level of properties.
+         * @property {Object} lev.deep - An object containing the properties of the deepest level.
+         * @property {string} lev.deep.val - A string value associated with the deepest level of the object.
+         * @property {Array} lev.deep.arr - An array of strings associated with the deepest level of the object.
+         */
+
+        /**
+         * HHAHAHAHAHAHAA
+         * @type {Obj}
+         */
         const obj = { key: 'TEST', num: 3, arr: [1,2,3], lev: { deep: {val: 'DEV', arr: ['1', '2']}}}
         const obj2 = { key: 'TEST2', num: 4, arr, extra_val: 'test' }
         const obj3 = { key: 'TEST2', num: 5, arr, extra_val: 'test2' }
@@ -61,7 +80,17 @@ export default class TestScene extends Phaser.Scene{
         // this.result = Phaser.Utils.Objects.HasValue(obj, 'lev')
         this.result = Phaser.Utils.Objects.IsPlainObject(obj)
 
-        console.log( this.TAG, this.result ,arr, new_arr, matrix)
+        const testClass = new TestClass(20, 50)
+        testClass.
+
+        // /**
+        //  * @type {TestClass&Obj}
+        //  */
+        // const newObj = new Phaser.Utils.Objects.Merge(testClass, obj)
+        // const test2 = new Ext2()
+        // const ext = new ExtendedClass(80,20)
+
+        console.log(ext)
     }
 
     create() {

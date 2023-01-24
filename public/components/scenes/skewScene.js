@@ -1,4 +1,7 @@
-export default class SkewScene extends Phaser.Scene {
+import { ContainerSkew } from 'phaser3-rex-plugins/plugins/quadimage.js';
+import ContainerLite from 'phaser3-rex-plugins/plugins/containerlite.js';
+
+export default class SkewSceneGroups extends Phaser.Scene {
     constructor(config) {
         super(config)
     }
@@ -12,51 +15,22 @@ export default class SkewScene extends Phaser.Scene {
         this.rect_size = { width: w, height: h }
 
         this.step_angle = w / 2.45
-        // this.step_angle = 90 / 3
-        console.log(w, this.step_angle)
         this.distance = (w + this.step_angle) / 2
         this.step = this.distance * 2
     }
 
     create() {
-        // const { width, height } = this.game.scale.baseSize
-        // const [ x, y, w, h ] = [ width / 2, height / 2, height / 5, height / 5 ]
-        // const square1 = this.add.rectangle(0, 0, w, h, 0xff0000)
-        // const square2 = this.add.rectangle(0, 0, w, h, 0xff0000)
-        // const square3 = this.add.rectangle(0, 0, w, h, 0xff0000)
-        // const rect = this.add.rectangle(0, 0, w, h, 0x00ff00)
+        const { x, y } = this.center
+        const { width, height } = this.size
+        // const rect = this.createRect(-20, -20)
+        const rect = this.add.rectangle(0, 0, 200, 200, 0xff00ff)
+        // const container = this.add.container(x, y, rect)
+        const container = new ContainerLite(this, 0, 0, 200, 200, [rect])
+        const skew = new ContainerSkew(container, { useParentBounds: false })
+        skew.enter().setPosition(x, y)
+        skew.setSkewXDeg(45)
         
-        // const arr = [
-        //     this.add.rectangle(0, 0, w, h, 0xff0000),
-        //     this.add.rectangle(0, 0, w, h, 0xff0000),
-        //     this.add.rectangle(0, 0, w, h, 0xff0000),
-        //     this.add.rectangle(0, 0, w, h, 0xff0000)
-        // ]
-        // console.log(arr)
-        // const step_angle = 90
-
-        // const distance = (w + step_angle) / 2
-        // const step = distance * 2
-
-
-        // const group1 = this.add.group(arr())
-        // const group2 = this.add.group(arr())
-        // const group3 = this.add.group(arr())
-
-
-        // group1.incXY(distance * 0, distance * 0, step, 0).propertyValueSet('angle', -45)
-        // group2.incXY(distance * 1, distance * 1, step, 0).propertyValueSet('angle', -45)
-        // group3.incXY(distance * 2, distance * 2, step, 0).propertyValueSet('angle', -45)
-        // // square.setAngle(-45)
-        // console.log(group1)
-        
-        
-        // const group = this.createGroup()
-        // group.incXY(0, 0, this.step, 0).propertyValueSet('angle', -45)
-
-        const children = this.createGroups(25, 25)
-        const container = this.add.container(0, 0, this.createContainer(children))
-        // container.on(Phaser.Input.Events.DRAG, ({ x, y }) => container.setPosition(x, y))
+        console.log(skew, container)
     }
 
     createGroups(groups = 1, elements = 5) {

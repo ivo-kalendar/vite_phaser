@@ -13,7 +13,7 @@ import { init } from './public/engines/game'
 
 // init(ScaleGraphics, 'graphic-scene')
 // init(L_System, 'l-system')
-// init(TestScene, 'testScene')
+init(TestScene, 'testScene')
 // init(AddoptedProps, 'addoptedProps')
 // init(ChatGPTScene, 'chat-gpt-scene')
-init(SkewScene, 'skew-scene')
+// init(SkewScene, 'skew-scene')
